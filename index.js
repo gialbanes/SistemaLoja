@@ -2,7 +2,7 @@ const express = require("express");
 
 const app = express();
 
-app.set('view engine', 'ejs');
+app.set("view engine", "ejs");
 
 app.use(express.static("public"));
 
@@ -23,7 +23,33 @@ app.get("/clientes", (req, res) => {
   });
 });
 
-app.get("/produtos", (req, res) => {
+app.get("/produtos/:categoria?", (req, res) => {
+  const categoria = req.params.categoria;
+
+  const maquiagem = [
+    {
+      nomeProduto: "Blush Oceane",
+      preco: 39.9,
+      categoria: "Maquiagem",
+    },
+  ];
+
+  const skincare = [
+    {
+      nomeProduto: "Máscara facial Oceane",
+      preco: 15.9,
+      categoria: "Skin care",
+    },
+  ];
+
+  const cabelo = [
+    {
+      nomeProduto: "Shampoo",
+      preco: 40.5,
+      categoria: "Cabelo",
+    },
+  ];
+
   const produtos = [
     {
       nomeProduto: "Hidratante de corpo",
@@ -44,7 +70,11 @@ app.get("/produtos", (req, res) => {
     },
   ];
   res.render("produtos", {
+    categoria: categoria,
     produtos: produtos,
+    maquiagem: maquiagem,
+    skincare: skincare,
+    cabelo: cabelo
   });
 });
 

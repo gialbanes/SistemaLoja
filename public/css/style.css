@@ -22,8 +22,6 @@ table{
 }
 .custom-navbar {
     background-color: #D29797;
-    position: fixed;
-    z-index: 2;
     width: 100%;
   }
   .navbar-nav{

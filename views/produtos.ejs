@@ -1,25 +1,85 @@
 <%- include('partials/navbar.ejs') %>   
-<%- include('partials/header.ejs') %> 
 
 <h1>Gerenciador de produtos</h1>
 <hr>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">Nome</th>
-      <th scope="col">Preço</th>
-      <th scope="col">Categoria</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% produtos.forEach((produto, index) => { %>
+
+
+<% if (categoria === "maquiagem") { %>
+  <table class="table table-hover">
+    <thead>
       <tr>
-        <td><%= produto.nomeProduto %></td>
-        <td><%= produto.preco %></td>
-        <td><%= produto.categoria %></td>
+        <th scope="col">Nome</th>
+        <th scope="col">Preço</th>
+        <th scope="col">Categoria</th>
       </tr>
-    <% }) %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% maquiagem.forEach((make) => { %>
+        <tr>
+          <td><%= make.nomeProduto %></td>
+          <td><%= make.preco %></td>
+          <td><%= make.categoria %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <% } else if (categoria === "skincare"){ %>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Preço</th>
+          <th scope="col">Categoria</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% skincare.forEach((skin) => { %>
+          <tr>
+            <td><%= skin.nomeProduto %></td>
+            <td><%= skin.preco %></td>
+            <td><%= skin.categoria %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <% } else if (categoria === "cabelo"){ %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Categoria</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% cabelo.forEach((hair) => { %>
+            <tr>
+              <td><%= hair.nomeProduto %></td>
+              <td><%= hair.preco %></td>
+              <td><%= hair.categoria %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+<% } else { %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Preço</th>
+        <th scope="col">Categoria</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% produtos.forEach((produto) => { %>
+        <tr>
+          <td><%= produto.nomeProduto %></td>
+          <td><%= produto.preco %></td>
+          <td><%= produto.categoria %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+<% } %>
 
 <%- include('partials/footer.ejs') %>
