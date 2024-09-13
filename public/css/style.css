@@ -21,15 +21,62 @@ table{
     margin-top: 1%;
 }
 .custom-navbar {
-    background-color: #023b1b; /* Cor de fundo da navbar */
+    background-color: #D29797;
+    position: fixed;
+    z-index: 2;
+    width: 100%;
   }
-  
-  .navbar-nav .nav-link {
+  .navbar-nav{
+    margin-left: -200px;
+  }
+  .navbar-nav .nav-link{
     font-size: 18px;
   }
-  
-  .navbar-brand {
-    font-size: 25px;
-    margin-left: 2%;
+  .navbar-brand .logo{
+    width: 35%;
+    margin-left: 3%;
   }
-  
+.d-flex justify-content-center{
+    overflow-x: hidden; 
+    white-space: nowrap;
+}
+.cards{
+    margin-top: 12.7%;
+    padding-left: 100px;
+    padding-right: 100px; 
+    margin-bottom: 12.7%;
+}
+.card{
+    width: 15%;
+}
+.influencers{
+    margin-bottom: 12.7%;
+}
+.collab{
+    border-bottom: 1px solid #ccc;
+}
+.collabTitle{
+    text-align: center;
+    margin-bottom: -0.1%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 36px;
+}
+.collabSub{
+    text-align: center;
+    margin-bottom: 4%;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: normal;    
+    font-size: 18px;
+}
+.produtos{
+    margin-bottom: 12.7%;
+}
+.card-link {
+    color: #000000; 
+    text-decoration: none; 
+}
+.card-link:hover {
+    color: #D29797; 
+    text-decoration: none; 
+}
