@@ -1,0 +1,35 @@
+body {
+    overflow-x: hidden;
+}
+.titleSistema{
+    text-align: center; 
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: 550;
+    margin-top: 2%;
+}
+h1{
+    margin-top: 3%;
+    margin-left: 2%;
+}
+p{
+    font-size: 18px;
+    font-weight: 550;
+}
+table{
+    margin-left: 2%;
+    margin-top: 1%;
+}
+.custom-navbar {
+    background-color: #023b1b; /* Cor de fundo da navbar */
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: 18px;
+  }
+  
+  .navbar-brand {
+    font-size: 25px;
+    margin-left: 2%;
+  }
+  
