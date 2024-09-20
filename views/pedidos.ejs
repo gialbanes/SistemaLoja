@@ -5,6 +5,8 @@
 <table class="table table-hover">
   <thead>
     <tr>
+      <th style="width: 100px;"></th> 
+      <th style="width: 100px;"></th> 
       <th scope="col">Número do pedido</th>
       <th scope="col">Valor</th>
     </tr>
@@ -12,6 +14,15 @@
   <tbody>
     <% pedidos.forEach((pedido, index) => { %>
       <tr>
+        <th scope="col">
+          <div class="container-fluid">
+            <img src="/imgs/order.png" class="icon"  alt="">
+          </div>
+          </th>
+        <td>
+          <div class="container">
+            <img src=<%= pedido.src%> class="img-fluid imgicon" alt="">
+          </div>
         <td><%= pedido.numero %></td>
         <td><%= pedido.valor %></td>
       </tr>

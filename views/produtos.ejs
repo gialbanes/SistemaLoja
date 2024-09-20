@@ -1,13 +1,13 @@
 <%- include('partials/navbar.ejs') %>   
 
-<h1>Gerenciador de produtos</h1>
-<hr>
-
 
 <% if (categoria === "maquiagem") { %>
   <table class="table table-hover">
+    <h1>Maquiagens</h1>
+    <hr>
     <thead>
       <tr>
+        <th style="width: 200px;"></th> 
         <th scope="col">Nome</th>
         <th scope="col">Preço</th>
         <th scope="col">Categoria</th>
@@ -16,6 +16,9 @@
     <tbody>
       <% maquiagem.forEach((make) => { %>
         <tr>
+          <td>
+              <img src=<%= make.src%> class="img-fluid imgicon" alt="">
+          </td>
           <td><%= make.nomeProduto %></td>
           <td><%= make.preco %></td>
           <td><%= make.categoria %></td>
@@ -24,9 +27,12 @@
     </tbody>
   </table>
   <% } else if (categoria === "skincare"){ %>
+    <h1>Skincare</h1>
+    <hr>
     <table class="table table-hover">
       <thead>
         <tr>
+          <th style="width: 200px;"></th> 
           <th scope="col">Nome</th>
           <th scope="col">Preço</th>
           <th scope="col">Categoria</th>
@@ -35,6 +41,9 @@
       <tbody>
         <% skincare.forEach((skin) => { %>
           <tr>
+            <td>
+              <img src=<%= skin.src%> class="img-fluid imgicon" alt="">
+          </td>
             <td><%= skin.nomeProduto %></td>
             <td><%= skin.preco %></td>
             <td><%= skin.categoria %></td>
@@ -43,9 +52,12 @@
       </tbody>
     </table>
     <% } else if (categoria === "cabelo"){ %>
+      <h1>Cabelos</h1>
+      <hr>
       <table class="table table-hover">
         <thead>
           <tr>
+            <th style="width: 200px;"></th>
             <th scope="col">Nome</th>
             <th scope="col">Preço</th>
             <th scope="col">Categoria</th>
@@ -54,6 +66,9 @@
         <tbody>
           <% cabelo.forEach((hair) => { %>
             <tr>
+              <td>
+                <img src=<%= hair.src%> class="img-fluid imgicon" alt="">
+            </td>
               <td><%= hair.nomeProduto %></td>
               <td><%= hair.preco %></td>
               <td><%= hair.categoria %></td>
@@ -63,16 +78,42 @@
       </table>
 <% } else { %>
   <table class="table table-hover">
+    <h1>Produtos</h1>
+    <hr>
     <thead>
       <tr>
+        <th style="width: 200px;"></th> 
         <th scope="col">Nome</th>
         <th scope="col">Preço</th>
         <th scope="col">Categoria</th>
       </tr>
     </thead>
     <tbody>
-      <% produtos.forEach((produto) => { %>
+      <% produtos.maquiagem.forEach((produto) => { %>
         <tr>
+          <td>
+            <img src=<%= produto.src%> class="img-fluid imgicon" alt="">
+        </td>
+          <td><%= produto.nomeProduto %></td>
+          <td><%= produto.preco %></td>
+          <td><%= produto.categoria %></td>
+        </tr>
+      <% }) %>
+      <% produtos.skincare.forEach((produto) => { %>
+        <tr>
+          <td>
+            <img src=<%= produto.src%> class="img-fluid imgicon" alt="">
+        </td>
+          <td><%= produto.nomeProduto %></td>
+          <td><%= produto.preco %></td>
+          <td><%= produto.categoria %></td>
+        </tr>
+      <% }) %>
+      <% produtos.cabelo.forEach((produto) => { %>
+        <tr>
+          <td>
+            <img src=<%= produto.src%> class="img-fluid imgicon" alt="">
+        </td>
           <td><%= produto.nomeProduto %></td>
           <td><%= produto.preco %></td>
           <td><%= produto.categoria %></td>

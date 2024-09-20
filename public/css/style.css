@@ -78,4 +78,11 @@ table{
     color: #D29797; 
     text-decoration: none; 
 }
-
+.imgicon{
+    height: 10vh;
+    width: 10vh;
+}
+.icon{
+    height: 5vh;
+    width: 5vh;
+}
