@@ -1,3 +1,3 @@
 # Sistema Loja
-Sistema desenvolvido para testar conhecimentos acadêmicos. Ainda pretende-se connectá-lo ao MySql
+Sistema desenvolvido para testar conhecimentos acadêmicos. Ainda pretende-se conectá-lo ao MySql
  
