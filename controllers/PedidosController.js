@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 import Pedido from "../models/Pedido.js";
 
-router.get("/pedidos", (req, res) => {
+router.get("/pedidos", function (req, res) {
   Pedido.findAll()
     .then((pedidos) => {
       res.render("pedidos", {
@@ -27,7 +27,7 @@ router.post("/pedidos/new", (req, res) => {
       console.log(error);
     });
 });
-router.get("/pedid/delete/:id", (req, res) => {
+router.get("/pedidos/delete/:id", (req, res) => {
   const id = req.params.id;
   Pedido.destroy({
     where: {
@@ -45,7 +45,7 @@ router.get("/pedidos/edit/:id", (req, res) => {
   const id = req.params.id;
   Pedido.findByPk(id)
     .then((pedido) => {
-      res.render("/pedidoEdit", {
+      res.render("pedidoEdit", {
         pedido: pedido,
       });
     })
@@ -53,7 +53,8 @@ router.get("/pedidos/edit/:id", (req, res) => {
       console.log(error);
     });
 });
-router.get("/pedidos/update", (req, res) => {
+router.post("/pedidos/update", (req, res) => {
+  const id = req.body.id;
   const numero = req.body.numero;
   const valor = req.body.valor;
   Pedido.update(

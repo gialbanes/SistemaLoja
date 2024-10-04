@@ -1,33 +1,53 @@
-<%- include('partials/navbar.ejs') %>   
-
-<h1>Gerenciador de pedidos</h1>
-<hr>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th style="width: 100px;"></th> 
-      <th style="width: 100px;"></th> 
-      <th scope="col">Número do pedido</th>
-      <th scope="col">Valor</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% pedidos.forEach((pedido, index) => { %>
-      <tr>
-        <th scope="col">
-          <div class="container-fluid">
-            <img src="/imgs/order.png" class="icon"  alt="">
-          </div>
-          </th>
-        <td>
-          <div class="container">
-            <img src=<%= pedido.src%> class="img-fluid imgicon" alt="">
-          </div>
-        <td><%= pedido.numero %></td>
-        <td><%= pedido.valor %></td>
-      </tr>
-    <% }) %>
-  </tbody>
-</table>
-
-<%- include('partials/footer.ejs') %>
+<%- include('partials/navbar.ejs') %>
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h1>Cadastrar pedido</h1>
+      <hr>
+    </div>
+    <div class="card-body">
+      <form action="/pedidos/new" method="post">
+        <label>Número do pedido:</label>
+        <input type="text" name="numero" id="numero" class="form-control" required>
+        <label>Valor do pedido:</label>
+        <input type="text" name="valor" id="valor" class="form-control" required>
+        <br>
+        <input type="submit" value="Cadastrar" class="btn btn-success">
+      </form>
+      <hr>
+    </div>
+  </div>
+</div>
+<br>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h1>Gerenciador de pedidos</h1>
+        <hr>
+      </div>
+      <div class="card-body">
+        <table>
+          <thead>
+              <tr>
+                  <th></th>
+                  <th>Número:</th>
+                  <th>Valor:</th>
+                  <th colspan="2">Ação:</th>
+              </tr>
+          </thead>
+          <tbody>
+              <% pedidos.forEach(pedido => { %>
+              <tr>
+                  <td><img src="imgs/order.png" width="30px"></td>
+                  <td><%= pedido.numero %></td>
+                  <td><%= pedido.valor.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'}) %></td>
+                  <td><a style="color: orange;" href="/pedidos/edit/ <%= pedido.id %>">Editar</a></td>
+                  <td><a style="color: red;" href="/pedidos/delete/<%= pedido.id %>" onclick="return confirm('Deseja realmente deletar o pedido <%= pedido.numero %>')">Deletar</a></td>
+              </tr>
+              <% }) %>
+          </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+  <%- include('partials/footer.ejs') %>

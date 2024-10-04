@@ -54,7 +54,7 @@ router.post("/clientes/update", (req, res) => {
   const endereco = req.body.endereco;
   Cliente.update(
     {
-      nome: nome,
+      nome: nome, //ESUQERDA: COLUNA NO BD; DIREITA: VARIÁVEL QUE VEIO DO FORMS;
       cpf: cpf,
       endereco: endereco,
     },

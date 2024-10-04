@@ -7,7 +7,7 @@ import ClientesController from "./controllers/ClientesController.js";
 import ProdutosController from "./controllers/ProdutosController.js";
 import PedidosController from "./controllers/PedidosController.js";
 
-//app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false }));
 
 connection
   .authenticate()
