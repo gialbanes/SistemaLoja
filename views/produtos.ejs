@@ -1,206 +1,225 @@
-<%- include('partials/navbar.ejs') %>   
+<%- include('partials/navbar.ejs') %>
 <div class="container">
   <div class="card">
     <div class="card-header">
       <h1>Cadastrar produto</h1>
-      <hr>
+      <hr />
     </div>
     <div class="card-body">
       <form action="/produtos/new" method="post">
         <label>Nome do produto:</label>
-        <input type="text" name="nome" id="nome" class="form-control" required>
+        <input
+          type="text"
+          name="nome"
+          id="nome"
+          class="form-control"
+          required
+        />
         <label>Preço do produto:</label>
-        <input type="text" name="preco" id="preco" class="form-control" required>
+        <input
+          type="text"
+          name="preco"
+          id="preco"
+          class="form-control"
+          required
+        />
         <label>Categoria do produto:</label>
-        <input type="text" name="categoria" id="categoria" class="form-control" required>
-        <br>
-        <input type="submit" class="btn btn-success" value="Cadastrar">
+        <input
+          type="text"
+          name="categoria"
+          id="categoria"
+          class="form-control"
+          required
+        />
+        <br />
+        <input type="submit" class="btn btn-success" value="Cadastrar" />
       </form>
     </div>
   </div>
 </div>
-<br>
+<br />
+<div class="container">
+  <% if (categoria === 'todos') { %>
+  <div class="card">
+    <div class="card-header">
+      <h1>Produtos</h1>
+    </div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Nome:</th>
+            <th>Preço:</th>
+            <th>Categoria:</th>
+            <th colspan="2">Ação:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% produtos.forEach(produto => { %>
+          <tr>
+            <td><img src="imgs/product.png" width="30px" /></td>
+            <td><%= produto.nome %></td>
+            <td>
+              <%= produto.preco.toLocaleString('pt-br', {style: 'currency',
+              currency: 'BRL' }) %>
+            </td>
+            <td><%= produto.categoria %></td>
+            <td>
+              <a style="color: orange" href="/produtos/edit/<%= produto.id %>"
+                >Editar</a
+              >
+            </td>
+            <td>
+              <a
+                style="color: red"
+                href="/produtos/delete/<%= produto.id %>"
+                onclick="return confirm('Deseja realmente deletar o produto <%= produto.nome %>?')"
+                >Deletar</a
+              >
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <% } else if (categoria === 'maquiagem') { %>
+  <div class="card">
+    <div class="card-header">
+      <h1>Maquiagem</h1>
+    </div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Nome:</th>
+            <th>Preço:</th>
+            <th>Categoria:</th>
+            <th colspan="2">Ação:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% produtos.forEach(produto => { %>
+          <tr>
+            <td><img src="/imgs/product.png" width="30px" /></td>
+            <td><%= produto.nome %></td>
+            <td>
+              <%= produto.preco.toLocaleString('pt-br', {style: 'currency',
+              currency: 'BRL' }) %>
+            </td>
+            <td><%= produto.categoria %></td>
+            <td>
+              <a style="color: orange" href="/produtos/edit/<%= produto.id %>"
+                >Editar</a
+              >
+            </td>
+            <td>
+              <a
+                style="color: red"
+                href="/produtos/delete/<%= produto.id %>"
+                onclick="return confirm('Deseja realmente deletar o produto <%= produto.nome %>?')"
+                >Deletar</a
+              >
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <% } else if (categoria === 'skincare') { %>
+  <div class="card">
+    <div class="card-header">
+      <h1>Skincare</h1>
+    </div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Nome:</th>
+            <th>Preço:</th>
+            <th>Categoria:</th>
+            <th colspan="2">Ação:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% produtos.forEach(produto => { %>
+          <tr>
+            <td><img src="/imgs/product.png" width="30px" /></td>
+            <td><%= produto.nome %></td>
+            <td>
+              <%= produto.preco.toLocaleString('pt-br', {style: 'currency',
+              currency: 'BRL' }) %>
+            </td>
+            <td><%= produto.categoria %></td>
+            <td>
+              <a style="color: orange" href="/produtos/edit/<%= produto.id %>"
+                >Editar</a
+              >
+            </td>
+            <td>
+              <a
+                style="color: red"
+                href="/produtos/delete/<%= produto.id %>"
+                onclick="return confirm('Deseja realmente deletar o produto <%= produto.nome %>?')"
+                >Deletar</a
+              >
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <% } else if (categoria === 'cabelo') { %>
+  <div class="card">
+    <div class="card-header">
+      <h1>Cabelo</h1>
+    </div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Nome:</th>
+            <th>Preço:</th>
+            <th>Categoria:</th>
+            <th colspan="2">Ação:</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% produtos.forEach(produto => { %>
+          <tr>
+            <td><img src="/imgs/product.png" width="30px" /></td>
+            <td><%= produto.nome %></td>
+            <td>
+              <%= produto.preco.toLocaleString('pt-br', {style: 'currency',
+              currency: 'BRL' }) %>
+            </td>
+            <td><%= produto.categoria %></td>
+            <td>
+              <a style="color: orange" href="/produtos/edit/<%= produto.id %>"
+                >Editar</a
+              >
+            </td>
+            <td>
+              <a
+                style="color: red"
+                href="/produtos/delete/<%= produto.id %>"
+                onclick="return confirm('Deseja realmente deletar o produto <%= produto.nome %>?')"
+                >Deletar</a
+              >
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <% } %>
+</div>
 
-
-<% 
-  // if (categoria === "maquiagem") { 
-%>
-  <% 
-  // <table class="table table-hover">
-  //   <thead>
-  //     <tr>
-  //       <th style="width: 200px;"></th> 
-  //       <th scope="col">Nome</th>
-  //       <th scope="col">Preço</th>
-  //       <th scope="col">Categoria</th>
-  //     </tr>
-  //   </thead>
-  //   <tbody>
-  //     maquiagem.forEach((make) => { 
-  %>
-        <% 
-        // <tr>
-        //   <td>
-        //       <img src=<%= make.src%> class="img-fluid imgicon" alt="">
-        //   </td>
-        //   <td><%= make.nomeProduto %></td>
-        //   <td><%= make.preco %></td>
-        //   <td><%= make.categoria %></td>
-        // </tr>
-        %>
-      <% 
-      // }) 
-      %>
-    <% 
-    // </tbody>
-    // </table>
-    // } else if (categoria === "skincare") { 
-    %>
-    <% 
-    // <h1>Skincare</h1>
-    // <hr>
-    // <table class="table table-hover">
-    //   <thead>
-    //     <tr>
-    //       <th style="width: 200px;"></th> 
-    //       <th scope="col">Nome</th>
-    //       <th scope="col">Preço</th>
-    //       <th scope="col">Categoria</th>
-    //     </tr>
-    //   </thead>
-    //   <tbody>
-    %>
-        <% 
-        // skincare.forEach((skin) => { 
-        %>
-          <% 
-          // <tr>
-          //   <td>
-          //     <img src=<%= skin.src%> class="img-fluid imgicon" alt="">
-          //   </td>
-          //   <td><%= skin.nomeProduto %></td>
-          //   <td><%= skin.preco %></td>
-          //   <td><%= skin.categoria %></td>
-          // </tr>
-          %>
-        <% 
-        // }) 
-        %>
-    <% 
-    // </tbody>
-    // </table>
-    // } else if (categoria === "cabelo") { 
-    %>
-      <% 
-      // <h1>Cabelos</h1>
-      // <hr>
-      // <table class="table table-hover">
-      //   <thead>
-      %>
-          <% 
-          // <tr>
-          //   <th style="width: 200px;"></th>
-          //   <th scope="col">Nome</th>
-          //   <th scope="col">Preço</th>
-          //   <th scope="col">Categoria</th>
-          // </tr>
-          %>
-        <% 
-        // </thead>
-        // <tbody>
-        %>
-          <% 
-          // cabelo.forEach((hair) => { 
-          %>
-            <% 
-            // <tr>
-            //   <td>
-            //     <img src=<%= hair.src%> class="img-fluid imgicon" alt="">
-            //   </td>
-            //   <td><%= hair.nomeProduto %></td>
-            //   <td><%= hair.preco %></td>
-            //   <td><%= hair.categoria %></td>
-            // </tr>
-            %>
-          <% 
-          // }) 
-          %>
-    <% 
-    // </tbody>
-    // </table>
-    // } else { 
-    %>
-  <% 
-  // <table class="table table-hover">
-  //   <h1>Produtos</h1>
-  //   <hr>
-  //   <thead>
-  %>
-      <% 
-      // <tr>
-      //   <th style="width: 200px;"></th> 
-      //   <th scope="col">Nome</th>
-      //   <th scope="col">Preço</th>
-      //   <th scope="col">Categoria</th>
-      // </tr>
-      %>
-    <% 
-    // </thead>
-    // <tbody>
-    %>
-      <% 
-      // produtos.maquiagem.forEach((produto) => { 
-      %>
-        <% 
-        // <tr>
-        //   <td>
-        //     <img src=<%= produto.src%> class="img-fluid imgicon" alt="">
-        //   </td>
-        //   <td><%= produto.nomeProduto %></td>
-        //   <td><%= produto.preco %></td>
-        //   <td><%= produto.categoria %></td>
-        // </tr>
-        %>
-      <% 
-      // }) 
-      %>
-      <% 
-      // produtos.skincare.forEach((produto) => { 
-      %>
-        <% 
-        // <tr>
-        //   <td>
-        //     <img src=<%= produto.src%> class="img-fluid imgicon" alt="">
-        //   </td>
-        //   <td><%= produto.nomeProduto %></td>
-        //   <td><%= produto.preco %></td>
-        //   <td><%= produto.categoria %></td>
-        // </tr>
-        %>
-      <% 
-      // }) 
-      %>
-      <% 
-      // produtos.cabelo.forEach((produto) => { 
-      %>
-        <% 
-        // <tr>
-        //   <td>
-        //     <img src=<%= produto.src%> class="img-fluid imgicon" alt="">
-        //   </td>
-        //   <td><%= produto.nomeProduto %></td>
-        //   <td><%= produto.preco %></td>
-        //   <td><%= produto.categoria %></td>
-        // </tr>
-        %>
-      <% 
-      // }) 
-      %>
-    <% 
-    // </tbody>
-    // </table>
-    %>
-<% 
-  // } 
-%>
 <%- include('partials/footer.ejs') %>
