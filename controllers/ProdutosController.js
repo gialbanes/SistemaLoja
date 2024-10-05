@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 import Produto from "../models/Produto.js";
 
-router.get("/produtos", (req, res) => {
+router.get("/produtos", function (req, res) {
   Produto.findAll()
     .then((produtos) => {
       res.render("produtos", {
@@ -13,7 +13,18 @@ router.get("/produtos", (req, res) => {
       console.log(error);
     });
 });
-router.get("/produtos/new", (req, res) => {
+router.get("/produtos/:categoria", (req, res) => {
+  Produto.findAll()
+    .then((produtos) => {
+      res.render("produtos", {
+        produtos: produtos,
+      });
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+router.post("/produtos/new", (req, res) => {
   const nome = req.body.nome;
   const preco = req.body.preco;
   const categoria = req.body.categoria;
