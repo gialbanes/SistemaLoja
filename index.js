@@ -18,7 +18,7 @@ connection
     console.log(error);
   });
 
-connection.query(`CREATE DATABASE IF NOT EXISTS OCEANE;`).then(() => {
+connection.query(`CREATE DATABASE IF NOT EXISTS loja_oceane;`).then(() => {
   console.log("Banco de dados já criado!")
 }).catch((error) => {
   console.log(error);

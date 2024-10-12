@@ -5,7 +5,7 @@ const connection = new Sequelize({
   host: "localhost",
   username: "root",
   password: "",
-  database: 'oceane',
+  database: 'loja_oceane',
   timezone: "-03:00",
 });
 export default connection;
